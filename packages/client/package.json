@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts --clean",
-    "test": "vitest run",
+    "test": "/usr/local/bin/node node_modules/vitest/dist/cli.js run",
     "typecheck": "tsc --noEmit"
   },
   "keywords": ["schoology", "api", "client", "lms", "education"],
