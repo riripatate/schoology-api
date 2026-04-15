@@ -1,0 +1,28 @@
+{
+  "name": "@schoology/mcp",
+  "version": "0.1.0",
+  "description": "Claude MCP skill for Schoology — access all your school data from Claude",
+  "bin": {
+    "schoology-mcp": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --clean",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "start": "node dist/index.js"
+  },
+  "keywords": ["schoology", "mcp", "claude", "skill", "lms"],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@schoology/client": "workspace:*",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsup": "^8.0.0",
+    "vitest": "^1.6.0"
+  }
+}
