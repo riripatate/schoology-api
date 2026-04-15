@@ -14,10 +14,16 @@
   },
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts --clean",
-    "test": "/usr/local/bin/node node_modules/vitest/dist/cli.js run",
+    "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
-  "keywords": ["schoology", "api", "client", "lms", "education"],
+  "keywords": [
+    "schoology",
+    "api",
+    "client",
+    "lms",
+    "education"
+  ],
   "license": "MIT",
   "dependencies": {
     "axios": "^1.7.0",
@@ -28,7 +34,7 @@
     "@types/node": "^20.0.0",
     "msw": "^2.3.0",
     "tsup": "^8.0.0",
-    "vitest": "^1.6.0"
+    "vitest": "^2.1.9"
   },
   "peerDependencies": {
     "typescript": ">=5.0.0"
