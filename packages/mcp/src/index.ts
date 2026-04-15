@@ -1,3 +1,6 @@
 #!/usr/bin/env node
-// MCP server entry — implemented in Task 12
-export {}
+import { startServer } from './server.js'
+startServer().catch((err) => {
+  console.error(err)
+  process.exit(1)
+})
