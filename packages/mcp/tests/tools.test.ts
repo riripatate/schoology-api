@@ -70,7 +70,7 @@ describe('MCP tool registration', () => {
     expect(() => registerAllTools(server, client)).not.toThrow()
   })
 
-  it('registers the expected number of tools (13)', () => {
+  it('registers the expected number of tools (14)', () => {
     const registered: string[] = []
     const originalTool = server.tool.bind(server)
     server.tool = (name: string, ...args: unknown[]) => {
@@ -78,6 +78,6 @@ describe('MCP tool registration', () => {
       return (originalTool as (...a: unknown[]) => unknown)(name, ...args)
     }
     registerAllTools(server, client)
-    expect(registered).toHaveLength(13)
+    expect(registered).toHaveLength(14)
   })
 })
