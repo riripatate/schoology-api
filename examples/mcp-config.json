@@ -1,0 +1,14 @@
+{
+  "_comment": "Add the 'schoology' block to your Claude Desktop mcpServers config",
+  "mcpServers": {
+    "schoology": {
+      "command": "npx",
+      "args": ["-y", "@schoology/mcp"],
+      "env": {
+        "SCHOOLOGY_USERNAME": "your.username@school.edu",
+        "SCHOOLOGY_PASSWORD": "yourpassword",
+        "SCHOOLOGY_DOMAIN": "yourschool.schoology.com"
+      }
+    }
+  }
+}
