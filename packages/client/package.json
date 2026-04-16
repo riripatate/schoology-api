@@ -1,6 +1,7 @@
 {
   "name": "@schoology/client",
   "version": "0.1.0",
+  "type": "module",
   "description": "TypeScript client for Schoology — session-based, no admin API keys required",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

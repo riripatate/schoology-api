@@ -1,6 +1,7 @@
 {
   "name": "@schoology/mcp",
   "version": "0.1.0",
+  "type": "module",
   "description": "Claude MCP skill for Schoology — access all your school data from Claude",
   "bin": {
     "schoology-mcp": "./dist/index.js"
