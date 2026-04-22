@@ -28,6 +28,7 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",
     "@schoologymcp/client": "workspace:*",
+    "playwright": "^1.44.0",
     "zod": "^3.25.76"
   },
   "devDependencies": {

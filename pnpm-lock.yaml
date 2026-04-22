@@ -66,6 +66,9 @@ importers:
       '@schoologymcp/client':
         specifier: workspace:*
         version: link:../client
+      playwright:
+        specifier: ^1.44.0
+        version: 1.59.1
       zod:
         specifier: ^3.25.76
         version: 3.25.76
