@@ -5,6 +5,7 @@
 **Your grades, assignments, and messages — in Claude.**
 
 [![CI](https://github.com/riripatate/schoology-api/actions/workflows/ci.yml/badge.svg)](https://github.com/riripatate/schoology-api/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/@schoology/mcp)](https://www.npmjs.com/package/@schoology/mcp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Log in once with your username and password. Ask Claude anything about your classes.
