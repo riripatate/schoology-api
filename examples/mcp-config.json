@@ -6,8 +6,7 @@
       "args": ["-y", "@schoology/mcp"],
       "env": {
         "SCHOOLOGY_USERNAME": "your.username@school.edu",
-        "SCHOOLOGY_PASSWORD": "yourpassword",
-        "SCHOOLOGY_DOMAIN": "yourschool.schoology.com"
+        "SCHOOLOGY_PASSWORD": "yourpassword"
       }
     }
   }

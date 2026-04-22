@@ -1,7 +1,7 @@
 export interface SchoologyCredentials {
   username: string
   password: string
-  domain: string
+  domain?: string
   sessionCachePath?: string
   sessionCacheKey?: string
 }

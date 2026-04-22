@@ -72,7 +72,8 @@ async function handleNativeLogin(page: Page, username: string, password: string)
 }
 
 export async function login(credentials: SchoologyCredentials): Promise<SessionCookies> {
-  const { username, password, domain } = credentials
+  const { username, password } = credentials
+  const domain = credentials.domain ?? 'app.schoology.com'
   const baseUrl = `https://${domain}`
 
   const browser = await chromium.launch({ headless: true })

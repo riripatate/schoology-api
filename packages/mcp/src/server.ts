@@ -6,16 +6,15 @@ import { registerAllTools } from './tools/index.js'
 function getCredentials() {
   const username = process.env['SCHOOLOGY_USERNAME']
   const password = process.env['SCHOOLOGY_PASSWORD']
-  const domain = process.env['SCHOOLOGY_DOMAIN']
-  if (!username || !password || !domain) {
+  if (!username || !password) {
     throw new Error(
-      'Missing required env vars: SCHOOLOGY_USERNAME, SCHOOLOGY_PASSWORD, SCHOOLOGY_DOMAIN'
+      'Missing required env vars: SCHOOLOGY_USERNAME, SCHOOLOGY_PASSWORD'
     )
   }
   return {
     username,
     password,
-    domain,
+    domain: process.env['SCHOOLOGY_DOMAIN'],
     sessionCachePath: process.env['SCHOOLOGY_SESSION_CACHE_PATH'],
     sessionCacheKey: process.env['SCHOOLOGY_SESSION_CACHE_KEY'],
   }

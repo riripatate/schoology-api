@@ -34,9 +34,10 @@ export class SchoologyClient {
 
   constructor(options: SchoologyClientOptions) {
     this.options = options
-    this.sessionKey = `${options.credentials.domain}:${options.credentials.username}`
+    const domain = options.credentials.domain ?? 'app.schoology.com'
+    this.sessionKey = `${domain}:${options.credentials.username}`
 
-    this.httpClient = new SchoologyHttpClient(options.credentials.domain, {
+    this.httpClient = new SchoologyHttpClient(domain, {
       timeout: options.timeout,
       onSessionExpired: () => this.authenticate(true),
     })
