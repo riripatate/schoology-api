@@ -1,6 +1,6 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import * as z from 'zod'
-import type { SchoologyClient } from '@schoology/client'
+import type { SchoologyClient } from '@schoologymcp/client'
 
 export function registerGradeTools(server: McpServer, client: SchoologyClient): void {
   server.tool('get_my_grades', 'Get the full grade report for all sections of the current user, including period grades and individual assignment grades', {}, async () => {

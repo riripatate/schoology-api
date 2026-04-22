@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { registerAllTools } from '../src/tools/index.js'
-import type { SchoologyClient } from '@schoology/client'
+import type { SchoologyClient } from '@schoologymcp/client'
 
 function makeMockClient(): SchoologyClient {
   return {

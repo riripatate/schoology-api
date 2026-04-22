@@ -3,7 +3,7 @@
   "mcpServers": {
     "schoology": {
       "command": "npx",
-      "args": ["-y", "@schoology/mcp"],
+      "args": ["-y", "@schoologymcp/mcp"],
       "env": {
         "SCHOOLOGY_USERNAME": "your.username@school.edu",
         "SCHOOLOGY_PASSWORD": "yourpassword"

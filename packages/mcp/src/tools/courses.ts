@@ -1,6 +1,6 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import * as z from 'zod'
-import type { SchoologyClient } from '@schoology/client'
+import type { SchoologyClient } from '@schoologymcp/client'
 
 export function registerCourseTools(server: McpServer, client: SchoologyClient): void {
   server.tool('get_course', 'Get details of a specific course by ID', { course_id: z.string().describe('The Schoology course ID') }, async ({ course_id }) => {

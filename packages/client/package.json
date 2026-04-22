@@ -1,5 +1,5 @@
 {
-  "name": "@schoology/client",
+  "name": "@schoologymcp/client",
   "version": "0.1.0",
   "type": "module",
   "description": "TypeScript client for Schoology — session-based, no admin API keys required",

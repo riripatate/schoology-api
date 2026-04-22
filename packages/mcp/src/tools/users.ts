@@ -1,6 +1,6 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import * as z from 'zod'
-import type { SchoologyClient } from '@schoology/client'
+import type { SchoologyClient } from '@schoologymcp/client'
 
 export function registerUserTools(server: McpServer, client: SchoologyClient): void {
   server.tool('get_me', 'Get the profile of the currently authenticated Schoology user', {}, async () => {

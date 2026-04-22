@@ -1,5 +1,5 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
-import type { SchoologyClient } from '@schoology/client'
+import type { SchoologyClient } from '@schoologymcp/client'
 import { registerUserTools } from './users.js'
 import { registerGradeTools } from './grades.js'
 import { registerAssignmentTools } from './assignments.js'

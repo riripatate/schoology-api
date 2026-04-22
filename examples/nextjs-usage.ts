@@ -1,10 +1,10 @@
-// Example: Use @schoology/client in a Next.js API route
+// Example: Use @schoologymcp/client in a Next.js API route
 // .env.local:
 //   SCHOOLOGY_USERNAME=youruser
 //   SCHOOLOGY_PASSWORD=yourpassword
 //   SCHOOLOGY_DOMAIN=yourschool.schoology.com
 
-import { SchoologyClient } from '@schoology/client'
+import { SchoologyClient } from '@schoologymcp/client'
 
 const client = new SchoologyClient({
   credentials: {

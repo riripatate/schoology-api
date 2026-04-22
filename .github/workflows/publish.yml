@@ -31,12 +31,12 @@ jobs:
       - name: Build all packages
         run: pnpm build
 
-      - name: Publish @schoology/client
-        run: pnpm --filter @schoology/client publish --access public --no-git-checks
+      - name: Publish @schoologymcp/client
+        run: pnpm --filter @schoologymcp/client publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish @schoology/mcp
-        run: pnpm --filter @schoology/mcp publish --access public --no-git-checks
+      - name: Publish @schoologymcp/mcp
+        run: pnpm --filter @schoologymcp/mcp publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
