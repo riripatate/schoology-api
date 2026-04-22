@@ -1,6 +1,6 @@
 {
   "name": "@schoologymcp/mcp",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "description": "Claude MCP skill for Schoology — access all your school data from Claude",
   "bin": {

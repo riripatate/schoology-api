@@ -68,6 +68,12 @@ function saveStored(creds: Credentials): void {
   writeFileSync(CRED_PATH, encrypt(JSON.stringify(creds)), { mode: 0o600 })
 }
 
+const ICON_CAP = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>`
+const ICON_USER = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`
+const ICON_KEY = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"/><path d="m21 2-9.6 9.6"/><circle cx="7.5" cy="15.5" r="5.5"/></svg>`
+const ICON_CHECK = `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>`
+const ICON_LOCK = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`
+
 const FORM_HTML = `<!doctype html>
 <html lang="en">
 <head>
@@ -75,34 +81,41 @@ const FORM_HTML = `<!doctype html>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Schoology Sign-in</title>
   <style>
-    :root { color-scheme: light dark; }
     * { box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f7; display: grid; place-items: center; min-height: 100vh; margin: 0; padding: 1rem; }
-    @media (prefers-color-scheme: dark) { body { background: #1c1c1e; } .card { background: #2c2c2e; color: #fff; } input { background: #1c1c1e; color: #fff; border-color: #3a3a3c; } p { color: #a1a1a6 !important; } }
-    .card { background: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); width: 100%; max-width: 380px; }
-    h1 { margin: 0 0 0.25rem; font-size: 1.6rem; }
-    p { margin: 0 0 1.75rem; color: #666; font-size: 0.92rem; }
-    label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 0.45rem; }
-    input { width: 100%; padding: 0.7rem 0.85rem; font-size: 1rem; border: 1px solid #d1d1d6; border-radius: 10px; margin-bottom: 1rem; transition: border-color 0.15s; }
-    input:focus { outline: none; border-color: #0071e3; }
-    button { width: 100%; padding: 0.8rem; background: #0071e3; color: white; border: none; border-radius: 10px; font-size: 1rem; font-weight: 500; cursor: pointer; transition: background 0.15s; }
-    button:hover { background: #0077ed; }
-    button:active { background: #0062c4; }
-    .hint { font-size: 0.8rem; color: #999; margin-top: 1rem; text-align: center; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #ffffff; color: #111; display: grid; place-items: center; min-height: 100vh; margin: 0; padding: 1rem; }
+    .card { background: #ffffff; padding: 2.5rem; border-radius: 16px; border: 1px solid #eaeaea; box-shadow: 0 10px 40px rgba(0,0,0,0.04); width: 100%; max-width: 400px; }
+    .brand { display: flex; align-items: center; gap: 0.6rem; color: #111; margin-bottom: 1.25rem; }
+    .brand-text { font-size: 1.3rem; font-weight: 600; letter-spacing: -0.01em; }
+    h1 { margin: 0 0 0.35rem; font-size: 1.4rem; font-weight: 600; letter-spacing: -0.01em; }
+    p.lead { margin: 0 0 1.75rem; color: #555; font-size: 0.93rem; line-height: 1.5; }
+    label { display: block; font-size: 0.82rem; font-weight: 500; margin-bottom: 0.4rem; color: #333; }
+    .field { position: relative; margin-bottom: 1rem; }
+    .field svg { position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: #888; pointer-events: none; }
+    input { width: 100%; padding: 0.72rem 0.85rem 0.72rem 2.5rem; font-size: 0.98rem; border: 1px solid #e0e0e0; border-radius: 10px; background: #ffffff; color: #111; transition: border-color 0.15s, box-shadow 0.15s; font-family: inherit; }
+    input:focus { outline: none; border-color: #111; box-shadow: 0 0 0 3px rgba(0,0,0,0.06); }
+    button { width: 100%; padding: 0.8rem; background: #111; color: #ffffff; border: none; border-radius: 10px; font-size: 0.98rem; font-weight: 500; cursor: pointer; transition: background 0.15s; font-family: inherit; margin-top: 0.5rem; }
+    button:hover { background: #000; }
+    button:active { background: #222; }
+    .hint { display: flex; align-items: center; justify-content: center; gap: 0.35rem; font-size: 0.78rem; color: #888; margin-top: 1.25rem; }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>🎓 Schoology</h1>
-    <p>Sign in so Claude can access your grades, assignments, and messages.</p>
+    <div class="brand">${ICON_CAP}<span class="brand-text">Schoology</span></div>
+    <h1>Sign in to continue</h1>
+    <p class="lead">Connect your Schoology account so Claude can access your grades, assignments, and messages.</p>
     <form method="post" action="/submit">
-      <label for="username">Username or email</label>
-      <input id="username" name="username" type="text" autocomplete="username" autofocus required />
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" autocomplete="current-password" required />
+      <div class="field">
+        ${ICON_USER}
+        <input id="username" name="username" type="text" placeholder="Username or email" autocomplete="username" autofocus required />
+      </div>
+      <div class="field">
+        ${ICON_KEY}
+        <input id="password" name="password" type="text" placeholder="Password" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required />
+      </div>
       <button type="submit">Sign in</button>
     </form>
-    <div class="hint">Credentials are encrypted and stored only on this machine.</div>
+    <div class="hint">${ICON_LOCK}<span>Encrypted and stored only on this machine</span></div>
   </div>
 </body>
 </html>`
@@ -113,16 +126,19 @@ const DONE_HTML = `<!doctype html>
   <meta charset="utf-8" />
   <title>Connected</title>
   <style>
-    :root { color-scheme: light dark; }
-    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #f5f5f7; display: grid; place-items: center; min-height: 100vh; margin: 0; }
-    @media (prefers-color-scheme: dark) { body { background: #1c1c1e; } .card { background: #2c2c2e; color: #fff; } p { color: #a1a1a6 !important; } }
-    .card { background: white; padding: 3rem 2.5rem; border-radius: 16px; text-align: center; max-width: 380px; }
-    h1 { margin: 0 0 0.5rem; font-size: 1.5rem; }
-    p { margin: 0; color: #666; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #ffffff; color: #111; display: grid; place-items: center; min-height: 100vh; margin: 0; padding: 1rem; }
+    .card { background: #ffffff; padding: 3rem 2.5rem; border-radius: 16px; border: 1px solid #eaeaea; box-shadow: 0 10px 40px rgba(0,0,0,0.04); text-align: center; max-width: 400px; width: 100%; }
+    .check { display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; background: #f3f3f3; border-radius: 50%; color: #111; margin-bottom: 1rem; }
+    h1 { margin: 0 0 0.5rem; font-size: 1.35rem; font-weight: 600; letter-spacing: -0.01em; }
+    p { margin: 0; color: #555; font-size: 0.93rem; }
   </style>
 </head>
 <body>
-  <div class="card"><h1>✅ Connected</h1><p>You can close this tab and return to Claude.</p></div>
+  <div class="card">
+    <div class="check">${ICON_CHECK}</div>
+    <h1>Connected</h1>
+    <p>You can close this tab and return to Claude.</p>
+  </div>
 </body>
 </html>`
 
