@@ -24,7 +24,7 @@ Pick your Claude. Copy the prompt. Paste it. Done.
 
 Open Claude Code and paste:
 
-> Ask me for my Schoology username and password, then run `claude mcp add schoology -- npx -y @schoologymcp/mcp` with `-e SCHOOLOGY_USERNAME=<username> -e SCHOOLOGY_PASSWORD=<password>`. Chromium installs automatically on first use. Confirm it's working by listing my classes.
+> Run `claude mcp add schoology -- npx -y @schoologymcp/mcp`. The first time it starts, a browser tab opens where I'll sign in to Schoology. Confirm it's working by listing my classes.
 
 <br />
 
@@ -32,7 +32,7 @@ Open Claude Code and paste:
 
 Open Cowork and paste:
 
-> Ask me for my Schoology username and password, then add `npx -y @schoologymcp/mcp` to my Cowork MCP config with `SCHOOLOGY_USERNAME` and `SCHOOLOGY_PASSWORD` as env vars. Verify it works by fetching my grades.
+> Add `npx -y @schoologymcp/mcp` to my Cowork MCP config. On first run it opens a browser tab for Schoology sign-in — no credentials needed in the config. Verify it works by fetching my grades.
 
 <br />
 
