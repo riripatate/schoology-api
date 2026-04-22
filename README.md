@@ -23,7 +23,7 @@ Pick your Claude. Copy the prompt. Paste it. Done.
 
 Open Claude Code and paste:
 
-> Install the Schoology MCP server from `https://github.com/riripatate/schoology-api`. Clone it to `~/.claude/mcp/schoology-api`, run `pnpm install && pnpm build && npx playwright install chromium` inside it, then ask me for my Schoology username and password and register it with `claude mcp add schoology -- node ~/.claude/mcp/schoology-api/packages/mcp/dist/index.js -e SCHOOLOGY_USERNAME=... -e SCHOOLOGY_PASSWORD=...`. Confirm it's working by listing my classes.
+> Ask me for my Schoology username and password, then run `claude mcp add schoology -- npx -y @schoology/mcp` with `-e SCHOOLOGY_USERNAME=<username> -e SCHOOLOGY_PASSWORD=<password>`. Chromium installs automatically on first use. Confirm it's working by listing my classes.
 
 <br />
 
@@ -31,7 +31,7 @@ Open Claude Code and paste:
 
 Open Cowork and paste:
 
-> Install the Schoology MCP server from `https://github.com/riripatate/schoology-api`. Clone the repo locally, run `pnpm install && pnpm build && npx playwright install chromium`, then prompt me for my Schoology username and password and add it to my Cowork MCP config pointing at `packages/mcp/dist/index.js` with those credentials as env vars. Verify it works by fetching my grades.
+> Ask me for my Schoology username and password, then add `npx -y @schoology/mcp` to my Cowork MCP config with `SCHOOLOGY_USERNAME` and `SCHOOLOGY_PASSWORD` as env vars. Verify it works by fetching my grades.
 
 <br />
 
